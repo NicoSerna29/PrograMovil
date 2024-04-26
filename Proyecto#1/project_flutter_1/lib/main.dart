@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PROYECTO#1 PROGRAWEB',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true, //parte fundamental diseño
       ),
       home: const MyHomePage(title: 'Practice for Test'),
@@ -38,31 +38,31 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: double.infinity,
               child: DrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
                 //encabezado del drawer
-                decoration: BoxDecoration(color: Colors.green),
                 child: Column(
                   children: [
                     Text(
-                      'I am a big tittle',
+                      'Small tittle',
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.w900,
+                        color: Colors.black,
+                        fontSize: 10.0,
                       ),
                     ),
                     Text(
-                      'I am a medium subtittle',
+                      'Medium Tittle',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16.0,
+                        fontSize: 13.0,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
-                      'I am a normal text',
+                      'Big Tittle',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 12.0,
+                        fontSize: 23.0,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                   ],
@@ -72,134 +72,100 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(title: const Text('Option #1'), onTap: () {}),
             ListTile(title: const Text('Option #2'), onTap: () {}),
             ListTile(title: const Text('Option #3'), onTap: () {}),
-            ListTile(title: const Text('Option #4'), onTap: () {}),
           ],
         ),
       ),
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true, // Esto centra el título en la barra de navegación
-        backgroundColor: Color.fromARGB(255, 6, 239, 49),
         // Puedes agregar más personalización aquí, como acciones, etc.
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 30), // Espacio desde la parte superior
+            SizedBox(height: 10), // Espacio desde la parte superior
             Center(
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     height: 30,
-                    width: 120,
+                    width: 500,
                     color: Colors.yellow,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                   ),
                   SizedBox(width: 30), // Espacio común entre los contenedores
                   Container(
                     height: 30,
-                    width: 120,
+                    width: 300,
                     color: Colors.blue,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                   ),
                   SizedBox(width: 30), // Espacio común entre los contenedores
                   Container(
                     height: 30,
-                    width: 120,
+                    width: 500,
                     color: Colors.red,
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                   ),
                 ],
               ),
             ),
-
-            TextSection(
-              description:
-                  'Amet tempor aliquip consectetur duis anim cillum ipsum reprehenderit esse culpa. Do amet est cillum nulla laborum anim incididunt ut aliqua ut aliqua minim tempor. Cillum culpa labore eiusmod eu nisi aliquip non Lorem. Ullamco est mollit laborum do sint labore. Occaecat consectetur sit laborum nisi quis dolore deserunt mollit ea pariatur qui irure incididunt dolore. Deserunt aute sunt irure aute ipsum mollit minim consectetur eu commodo aliquip amet. Commodo enim Lorem enim ex consectetur incididunt.',
+            Container(
+              width: 480,
+              child: TextSection(
+                description:
+                    'Amet tempor aliquip consectetur duis anim cillum ipsum reprehenderit esse culpa. Do amet est cillum nulla laborum anim incididunt ut aliqua ut aliqua minim tempor. Cillum culpa labore eiusmod eu nisi aliquip non Lorem. Ullamco est mollit laborum do sint labore. Occaecat consectetur sit laborum nisi quis dolore deserunt mollit ea pariatur qui irure incididunt dolore. Deserunt aute sunt irure aute ipsum mollit minim consectetur eu commodo aliquip amet. Commodo enim Lorem enim ex consectetur incididunt.',
+              ),
             ),
-            //ButtonSection(),
-            //ButtonsSection(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
+            Center(
+              child: Container(
+                width: 300.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ButtonWithText(
-                      color: Colors.black,
-                      icon: Icons.alarm,
-                    ),
-                    TextButton(
-                      onPressed: () {},
+                    ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        foregroundColor: Color.fromARGB(255, 28, 207, 22),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          backgroundColor: Color.fromARGB(255, 43, 207, 17)),
+                      onPressed: () {},
+                      child: ButtonWithText(
+                        color: Colors.black,
+                        icon: Icons.android,
                       ),
-                      child: const Text('SELECT ALARM'),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ButtonWithText(
-                      color: Colors.black,
-                      icon: Icons.key,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          foregroundColor: Color.fromARGB(255, 28, 207, 22),
-                          backgroundColor: Color.fromARGB(255, 88, 247, 181)),
+                          backgroundColor: Color.fromARGB(255, 13, 16, 210)),
                       onPressed: () {},
-                      child: const Text('SELECT KEY'),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    ButtonWithText(
-                      color: Colors.black,
-                      icon: Icons.camera,
-                    ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        foregroundColor: Color.fromARGB(255, 28, 207, 22),
+                      child: ButtonWithText(
+                        color: Colors.black,
+                        icon: Icons.apple,
                       ),
-                      child: const Text('SELECT CAMERA'),
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
-            Column(
-              children: [
-                SizedBox(height: 20),
-                ListTile(title: const Text('Element #0')),
-                ListTile(title: const Text('Element #1')),
-                ListTile(title: const Text('Element #2')),
-                ListTile(title: const Text('Element #3')),
-              ],
-            ),
-            TextSection(
-              description:
-                  'Est do aliqua minim sunt velit velit ad aliquip est Lorem cillum ut ex veniam. Magna id ullamco est consequat. Dolore culpa ex proident ipsum eu. Ad proident ex pariatur anim quis. Deserunt quis labore consequat consequat aliqua culpa commodo fugiat fugiat pariatur velit. Consequat incididunt veniam laborum est cillum dolore ex culpa laboris in sunt culpa laborum. Et aute do in aliqua proident eu.',
+            Container(
+              width: 150.0,
+              child: TextSection(
+                  description:
+                      'Ad quis magna minim laborum aute. Amet esse ut exercitation culpa sint aliqua. Laborum aliquip anim reprehenderit elit reprehenderit irure elit consequat aliquip et ullamco cupidatat minim cupidatat. Officia amet consequat est est ipsum laborum pariatur tempor. Ea laboris ut Lorem veniam.'),
             ),
             Container(
               padding: EdgeInsets.all(50),
               child: Text(
-                "FIN DE LA APLICACION",
+                "end of aplication",
                 style: TextStyle(
                   fontSize: 30,
-                  color: Color.fromARGB(255, 28, 207, 22),
+                  color: Colors.black,
                   fontWeight: FontWeight.w100,
                 ),
               ),
