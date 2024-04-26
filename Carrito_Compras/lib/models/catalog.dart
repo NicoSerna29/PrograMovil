@@ -1,42 +1,31 @@
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+//import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-/// A proxy of the catalog of items the user can buy.
-///
-/// In a real app, this might be backed by a backend and cached on device.
-/// In this sample app, the catalog is procedurally generated and infinite.
-///
-/// For simplicity, the catalog is expected to be immutable (no products are
-/// expected to be added, removed or changed during the execution of the app).
 class CatalogModel {
-  static List<String> itemNames = [
-    'Code Smell',
-    'Control Flow',
-    'Interpreter',
-    'Recursion',
-    'Sprint',
-    'Heisenbug',
-    'Spaghetti',
-    'Hydra Code',
-    'Off-By-One',
-    'Scope',
-    'Callback',
-    'Closure',
-    'Automata',
-    'Bit Shift',
-    'Currying',
+  List<String> PokeNames = [
+    Bulbasaur.name,
+    Ivysaur.name,
+    Venusaur.name,
+    Charmander.name,
+    Charmeleon.name,
+    Charizard.name,
+    Squirtle.name,
+    Wartortle.name,
+    Blastoise.name,
+    Pidgey.name,
+    Pidgeotto.name,
   ];
 
   /// Get item by [id].
   ///
   /// In this sample, the catalog is infinite, looping over [itemNames].
-  Item getById(int id) => Item(id, itemNames[id % itemNames.length]);
+  Pokemon getById(int id) {
+    return Pokemon(id, PokeNames[id % PokeNames.length], '', 0);
+  }
 
   /// Get item by its position in the catalog.
-  Item getByPosition(int position) {
+  Pokemon getByPosition(int position) {
     // In this simplified case, an item's position in the catalog
     // is also its id.
     return getById(position);
@@ -44,20 +33,29 @@ class CatalogModel {
 }
 
 @immutable
-class Item {
+class Pokemon {
   final int id;
   final String name;
-  final Color color;
-  final int price = 42;
+  final String img;
+  final int price;
 
-  Item(this.id, this.name)
-      // To make the sample app look nicer, each item is given one of the
-      // Material Design primary colors.
-      : color = Colors.primaries[id % Colors.primaries.length];
+  Pokemon(this.id, this.name, this.img, this.price);
 
   @override
   int get hashCode => id;
 
   @override
-  bool operator ==(Object other) => other is Item && other.id == id;
+  bool operator ==(Object other) => other is Pokemon && other.id == id;
 }
+
+Pokemon Bulbasaur = new Pokemon(1, "Bulbasaur", "assets/001.png", 1000);
+Pokemon Ivysaur = new Pokemon(1, "Ivysaur", "", 1000);
+Pokemon Venusaur = new Pokemon(1, "Venusaur", "", 1000);
+Pokemon Charmander = new Pokemon(1, "Charmander", "", 1000);
+Pokemon Charmeleon = new Pokemon(1, "Charmeleon", "", 1000);
+Pokemon Charizard = new Pokemon(1, "Charizard", "", 1000);
+Pokemon Squirtle = new Pokemon(1, "Squirtle", "", 1000);
+Pokemon Wartortle = new Pokemon(1, "Wartortle", "", 1000);
+Pokemon Blastoise = new Pokemon(1, "Blastoise", "", 1000);
+Pokemon Pidgey = new Pokemon(1, "Pidgey", "", 1000);
+Pokemon Pidgeotto = new Pokemon(1, "Pidgeotto", "", 1000);

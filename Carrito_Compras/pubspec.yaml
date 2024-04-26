@@ -31,3 +31,6 @@ flutter:
       fonts:
         - asset: fonts/Corben/Corben-Bold.ttf
           weight: 700
+flutter:
+  assets:
+    - assets/001.png

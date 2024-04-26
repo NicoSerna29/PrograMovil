@@ -38,25 +38,25 @@ class MyCart extends StatelessWidget {
 class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var itemNameStyle = Theme.of(context).textTheme.titleLarge;
+    var pokemonNameStyle = Theme.of(context).textTheme.titleLarge;
     // This gets the current state of CartModel and also tells Flutter
     // to rebuild this widget when CartModel notifies listeners (in other words,
     // when it changes).
     var cart = context.watch<CartModel>();
 
     return ListView.builder(
-      itemCount: cart.items.length,
+      itemCount: cart.pokemons.length,
       itemBuilder: (context, index) => ListTile(
         leading: const Icon(Icons.done),
         trailing: IconButton(
           icon: const Icon(Icons.remove_circle_outline),
           onPressed: () {
-            cart.remove(cart.items[index]);
+            cart.remove(cart.pokemons[index]);
           },
         ),
         title: Text(
-          cart.items[index].name,
-          style: itemNameStyle,
+          cart.pokemons[index].name,
+          style: pokemonNameStyle,
         ),
       ),
     );

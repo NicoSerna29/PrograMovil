@@ -20,7 +20,7 @@ class MyCatalog extends StatelessWidget {
           const SliverToBoxAdapter(child: SizedBox(height: 5)),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                (context, index) => _MyListItem(index)),
+                (context, index) => _MyListPokemon(index)),
           ),
         ],
       ),
@@ -29,9 +29,9 @@ class MyCatalog extends StatelessWidget {
 }
 
 class _AddButton extends StatelessWidget {
-  final Item item;
+  final Pokemon pokemon;
 
-  const _AddButton({required this.item});
+  const _AddButton({required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -42,20 +42,20 @@ class _AddButton extends StatelessWidget {
     //
     // This can lead to significant performance improvements.
     var isInCart = context.select<CartModel, bool>(
-      // Here, we are only interested whether [item] is inside the cart.
-      (cart) => cart.items.contains(item),
+      // Here, we are only interested whether [pokemon] is inside the cart.
+      (cart) => cart.pokemons.contains(pokemon),
     );
 
     return TextButton(
       onPressed: isInCart
           ? null
           : () {
-              // If the item is not in cart, we let the user add it.
+              // If the pokemon is not in cart, we let the user add it.
               // We are using context.read() here because the callback
               // is executed whenever the user taps the button. In other
               // words, it is executed outside the build method.
               var cart = context.read<CartModel>();
-              cart.add(item);
+              cart.add(pokemon);
             },
       style: ButtonStyle(
         overlayColor: MaterialStateProperty.resolveWith<Color?>((states) {
@@ -76,7 +76,8 @@ class _MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text('Catalog', style: Theme.of(context).textTheme.displayLarge),
+      title:
+          Text('POKE TIENDA', style: Theme.of(context).textTheme.displayLarge),
       floating: true,
       actions: [
         IconButton(
@@ -84,42 +85,46 @@ class _MyAppBar extends StatelessWidget {
           onPressed: () => context.go('/catalog/cart'),
         ),
       ],
+      backgroundColor:
+          Color.fromARGB(255, 215, 0, 0), // Cambia el color de la AppBar aquí
     );
   }
 }
 
-class _MyListItem extends StatelessWidget {
+class _MyListPokemon extends StatelessWidget {
   final int index;
 
-  const _MyListItem(this.index);
+  const _MyListPokemon(this.index);
 
   @override
   Widget build(BuildContext context) {
-    var item = context.select<CatalogModel, Item>(
-      // Here, we are only interested in the item at [index]. We don't care
+    var pokemon = context.select<CatalogModel, Pokemon>(
+      // Here, we are only interested in the pokemon at [index]. We don't care
       // about any other change.
       (catalog) => catalog.getByPosition(index),
     );
     var textTheme = Theme.of(context).textTheme.titleLarge;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: LimitedBox(
-        maxHeight: 48,
+        maxHeight: 40,
         child: Row(
           children: [
             AspectRatio(
               aspectRatio: 1,
               child: Container(
-                color: item.color,
+                child: Image(
+                  image: AssetImage('assets/imagen1.png'),
+                ),
               ),
             ),
             const SizedBox(width: 24),
             Expanded(
-              child: Text(item.name, style: textTheme),
+              child: Text(pokemon.name, style: textTheme),
             ),
             const SizedBox(width: 24),
-            _AddButton(item: item),
+            _AddButton(pokemon: pokemon),
           ],
         ),
       ),
