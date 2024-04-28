@@ -1,0 +1,37 @@
+name: carrito2
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  go_router: ^14.0.1
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+  
+flutter:
+  assets:
+    - assets/001.png
+    - assets/002.png
+    - assets/003.png # Ruta de la carpeta de assets
+    - assets/004.png
+    - assets/005.png
+    - assets/006.png
+    - assets/007.png
+    - assets/008.png
+    - assets/009.png
+    - assets/010.png
+    - assets/011.png
