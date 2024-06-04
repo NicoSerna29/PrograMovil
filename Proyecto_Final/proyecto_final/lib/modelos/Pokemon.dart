@@ -1,12 +1,17 @@
 class Pokemon{
-  final int id;
+  final int idP;
   final String name;
   final String sprite;
 
-  Pokemon({required this.id, required this.name, required this.sprite});
+  Pokemon(
+    {
+    required this.idP,
+    required this.name,
+    required this.sprite}
+  );
 
   Map<String, dynamic> toMap(){
-    return {'id': id, 'name': name, 'sprite': sprite};
+    return {'idP': idP, 'name': name, 'sprite': sprite};
   }
 
 }

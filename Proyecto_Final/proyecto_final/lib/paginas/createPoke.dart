@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:proyecto_final/db/db.dart';
+import 'package:proyecto_final/modelos/Pokemon.dart';
 import 'package:proyecto_final/paginas/pagCentral.dart';
 
 class addPoke extends StatelessWidget {
@@ -22,6 +24,7 @@ class FormAdd extends StatelessWidget {
   final idCrtl = TextEditingController();
   final nameCrtl = TextEditingController();
   final imgCrtl = TextEditingController();
+  final Operation operation = Operation();
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +80,13 @@ class FormAdd extends StatelessWidget {
               ),
               ElevatedButton(
                 child: Text("Registrar"),
-                onPressed: () {
+                onPressed: () async {
                   if (keyg.currentState?.validate() ?? false) {
+
+                    final Pokemon pokemon = Pokemon(idP: int.parse(idCrtl.text), name: nameCrtl.text, sprite: imgCrtl.text);
+                    await operation.insertPokemon(pokemon);
                     Navigator.pushNamed(context, centralApp.Route);
-                  }
-                  ;
+                  };
                 },
               ),
             ],
